@@ -124,5 +124,9 @@ const S_Books_save = async (_, { bookInput }) => {
 module.exports = {
   Query: {
     S_Books,
+    S_Books_count
+  },
+  Mutation: {
+    S_Books_save
   }
 }

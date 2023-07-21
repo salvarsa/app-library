@@ -9,14 +9,15 @@ const { ApolloServerPluginLandingPageProductionDefault } = require('apollo-serve
 //data base conecction
 const db = process.env.MONGODB || 'mongodb://localhost:27017/ms-library'
 
-const connectDb = () => {
+const connectDb = async () => {
     try {
-        connect(db);
+        await connect(db);
         console.log('DB CONNECTED..');
     } catch (error) {
-        return error
+        console.error('DB CONNECTION ERROR:', error);
     }
 }
+
 
 //inicializar la app
 //initializating app
@@ -53,7 +54,7 @@ async function start() {
 
     app.listen(PORT, () => {
         console.log(`app-library ready at port: ${PORT}`);
-        connectDb
+        connectDb()
     })
 }
 
