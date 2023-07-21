@@ -32,8 +32,13 @@ const S_BooksSchema = [`
     isBorrowed: Boolean
   }
 
-  type Query{
+  type Query {
     S_Books(filter: S_Books_filter):[S_Books]
+    S_Books_count(filter: S_Books_filter):Int
+  }
+
+  type Mutation {
+    S_Books_save(bookInput: S_Books_input):ID
   }
 `]
 
