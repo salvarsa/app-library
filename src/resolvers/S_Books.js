@@ -22,6 +22,7 @@ const S_Books = async (_, { filter = {}, options = {}, count = false }) => {
     if (editorial) query.editorial = editorial;
     if (categoryName) query.categoryName = categoryName;
     if (typeof isBorrowed === "Boolean") query.isBorrowed = isBorrowed;
+    const find = Books.find(query)
 
     if (count) return await Inventory.countDocuments(query);
 
