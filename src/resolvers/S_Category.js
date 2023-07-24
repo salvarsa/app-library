@@ -1,5 +1,6 @@
 const Category = require('../models/Category');
-const { generateId, handlePagination } = require('@codecraftkit/utils')
+const { handlePagination } = require('@codecraftkit/utils');
+const { v4: uuidv4 } = require('uuid')
 
 const S_Category = async (_, { filter = {}, options = {}, count = false }) => {
   try {
@@ -37,7 +38,7 @@ const S_Category_count = async (_, { filter = {} }) => {
 
 const S_Category_create = async (_, { categoryInput = {} }) => {
   try {
-    const ID = generateId();
+    const ID = uuidv4();
     let { name, key } = categoryInput;
 
     const newCategory = await new Category({

@@ -1,5 +1,5 @@
 const Books = require("../models/Books");
-const { generateId, handlePagination } = require("@codecraftkit/utils");
+const { handlePagination } = require("@codecraftkit/utils");
 const { v4: uuidv4 } = require('uuid');
 
 const S_Books = async (_, { filter = {}, options = {}, count = false }) => {
@@ -50,7 +50,7 @@ const S_Books_count = async (_, { filter = {} }) => {
 
 const S_Books_create = async (_, { bookInput = {} }) => {
   try {
-    const ID = uuidv4;
+    const ID = uuidv4();
     let { 
       name,
       author,
