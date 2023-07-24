@@ -53,7 +53,7 @@ async function start() {
     apolloServer.applyMiddleware({app});
 
     app.listen(PORT, () => {
-        console.log(`app-library ready at port: ${PORT}`);
+        console.log(`app-library ready on port: ${PORT}`);
         connectDb()
     })
 }
