@@ -123,6 +123,14 @@ const S_Books_save = async (_, { bookInput }) => {
   }
 }
 
+const S_Book_delete = async () => {
+  try {
+    
+  } catch (error) {
+    return error;
+  }
+}
+
 module.exports = {
   Query: {
     S_Books,
