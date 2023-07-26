@@ -5,6 +5,7 @@ const { ApolloServer } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
 const { ApolloServerPluginLandingPageProductionDefault } = require('apollo-server-core');
 
+
 //conexion con DataBase mongoDB
 //data base conecction
 const db = process.env.MONGODB || 'mongodb://localhost:27017/ms-library'
@@ -18,6 +19,17 @@ const connectDb = async () => {
     }
 }
 
+//mongo Atlas Connection
+// const db = process.env.MONGODB || 'mongodb://localhost:27017/ms-library'
+
+// const connectDb = async () => {
+//     try {
+//         await connect(db, { useNewUrlParser: true, useUnifiedTopology: true });
+//         console.log('DB CONNECTED..');
+//     } catch (error) {
+//         console.error('DB CONNECTION ERROR:', error);
+//     }
+// }
 
 //inicializar la app
 //initializating app
