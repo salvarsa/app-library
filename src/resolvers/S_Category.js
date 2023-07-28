@@ -11,18 +11,32 @@ const S_Category = async (_, { filter = {}, options = {}, count = false }) => {
     if (_id) query._id = _id
     if (name) query.name = name
     if (key) query.key = key
-    const find = Category.find(query)
-
+    
     if(count) return  await Category.countDocuments(query);
+    
+    //const find = Category.find(query)
 
-    if (skip) {
-      find.skip(skip);
-    }
-    if (limit) {
-      find.limit(limit);
-    }
+    const collection = [
+      { $match: query },
+      {
+        $lookup: {
+          from: 's_books',
+          localField: 'name',
+          foreignField: 'categoryName',
+          as: 'bookCategory'
+        },
 
-    return await find.lean();
+        $unwind:{
+          path: '$bookCategory',
+          preserveNullAndEmptyArrays: true
+        }
+      }
+    ]
+    
+    if (skip) collection.push({ $skip: skip }) 
+    if (limit) collection.push({ $limit: limit })
+
+    return await Category.aggregate(collection);
   } catch (error) {
     return error;
   }
@@ -39,7 +53,11 @@ const S_Category_count = async (_, { filter = {} }) => {
 const S_Category_create = async (_, { categoryInput = {} }) => {
   try {
     const ID = uuidv4();
-    let { name, key } = categoryInput;
+    const { name } = categoryInput;
+
+    const namePreffix = name.trim().slice(0, 3).toUpperCase();
+
+    const key = `S-${namePreffix}`
 
     const newCategory = await new Category({
       _id: ID,
@@ -53,7 +71,7 @@ const S_Category_create = async (_, { categoryInput = {} }) => {
   }
 }
 
-const S_Category_update = async (_, { categoryInput }) => {
+const S_Category_update = async (_, { categoryInput = {} }) => {
   try {
     let { _id, name } = categoryInput;
 
