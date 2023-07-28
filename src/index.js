@@ -24,7 +24,7 @@ const db = 'mongodb+srv://salvarsadev13:FoZPp3utgGL1oVk7@app-library.x7rlvlj.mon
 
 const connectDb = async () => {
     try {
-        await connect(db);
+        await connect(db, { useNewUrlParser: true, useUnifiedTopology: true });
         console.log('DB CONNECTED..');
     } catch (error) {
         console.error('DB CONNECTION ERROR:', error);

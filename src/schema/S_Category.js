@@ -3,6 +3,7 @@ const S_CategorySchema = [`
     _id: String,
     name: String
     key: String
+    bookCategory: S_Books
     createdAt: String
     updatedAt: String
     isRemove: Boolean

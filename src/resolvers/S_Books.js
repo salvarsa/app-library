@@ -77,7 +77,7 @@ const S_Books_create = async (_, { bookInput = {} }) => {
   }
 }
 
-const S_Books_update = async (_, { bookInput }) => {
+const S_Books_update = async (_, { bookInput = {}}) => {
   try {
     let {
       _id, 

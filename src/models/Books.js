@@ -3,16 +3,17 @@ const collectionName = 's_books'
 
 const schema = Schema({
   _id: { type: String, require: true },
-  name: { type: String, default: '' },
-  author: { type: String, default: '' },
-  year: { type: String, default: '' },
-  editorial: { type: String, default: '' },
-  categoryName: { type: String, default: '' },
+  name: { type: String },
+  author: { type: String },
+  year: { type: String },
+  editorial: { type: String },
+  categoryName: { type: String },
   isBorrowed: { type: Boolean, default: false },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
   isRemove: { type: Boolean, default: false },
 },{
+  strict: true,
   collectio: collectionName,
   _id: false
 })
