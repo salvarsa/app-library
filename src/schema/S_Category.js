@@ -1,8 +1,12 @@
+const categoryFields = `
+  _id: String,
+  name: String
+  key: String
+`
+
 const S_CategorySchema = [`
   type S_Category {
-    _id: String,
-    name: String
-    key: String
+    ${categoryFields}
     bookCategory: S_Books
     createdAt: String
     updatedAt: String
@@ -10,15 +14,11 @@ const S_CategorySchema = [`
   }
 
   input S_Category_filter {
-    _id: String,
-    name: String
-    key: String
+    ${categoryFields}
   }
 
   input S_Category_input {
-    _id: String,
-    name: String
-    key: String
+    ${categoryFields}
   }
 
   type Query {

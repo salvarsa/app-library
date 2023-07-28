@@ -10,13 +10,7 @@ const booksFields = `
 
 const S_BooksSchema = [`
   type S_Books {
-    _id: String
-    name: String
-    author: String
-    year: String
-    editorial: String
-    categoryName: String
-    isBorrowed: Boolean
+    ${booksFields}
     createdAt: String
     updatedAt: String
     isRemove: Boolean
