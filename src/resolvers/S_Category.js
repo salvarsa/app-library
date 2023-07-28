@@ -12,7 +12,7 @@ const S_Category = async (_, { filter = {}, options = {}, count = false }) => {
     if (name) query.name = name
     if (key) query.key = key
     
-    if(count) return  await Category.countDocuments(query);
+    if(count) return await Category.countDocuments(query);
     
     //const find = Category.find(query)
 
