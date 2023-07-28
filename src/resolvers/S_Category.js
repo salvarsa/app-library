@@ -24,8 +24,9 @@ const S_Category = async (_, { filter = {}, options = {}, count = false }) => {
           localField: 'name',
           foreignField: 'categoryName',
           as: 'bookCategory'
-        },
-
+        }
+      },
+      {
         $unwind:{
           path: '$bookCategory',
           preserveNullAndEmptyArrays: true
@@ -63,7 +64,7 @@ const S_Category_create = async (_, { categoryInput = {} }) => {
       _id: ID,
       name,
       key
-    })
+    }).save()
     
     return newCategory._id
   } catch (error) {

@@ -1,4 +1,12 @@
-
+const booksFields = `
+  _id: String
+  name: String
+  author: String
+  year: String
+  editorial: String
+  categoryName: String
+  isBorrowed: Boolean
+`
 
 const S_BooksSchema = [`
   type S_Books {
@@ -15,23 +23,11 @@ const S_BooksSchema = [`
   }
 
   input S_Books_filter {
-    _id: String
-    name: String
-    author: String
-    year: String
-    editorial: String
-    categoryName: String
-    isBorrowed: Boolean
+    ${booksFields}
   }
 
   input S_Books_input {
-    _id: String
-    name: String
-    author: String
-    year: String
-    editorial: String
-    categoryName: String
-    isBorrowed: Boolean
+    ${booksFields}
   }
 
   type Query {
