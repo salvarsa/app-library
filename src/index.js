@@ -20,7 +20,7 @@ const { ApolloServerPluginLandingPageProductionDefault } = require('apollo-serve
 // }
 
 //mongo Atlas Connection
-const db = 'mongodb+srv://salvarsadev13:FoZPp3utgGL1oVk7@app-library.x7rlvlj.mongodb.net/'
+const db = 'mongodb+srv://salvarsadev13:FoZPp3utgGL1oVk7@app-library.x7rlvlj.mongodb.net/app-library'
 
 const connectDb = async () => {
     try {
