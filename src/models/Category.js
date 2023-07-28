@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model: MODEL } = require('mongoose');
 const collectionName = 's_category'
 
 const schema = Schema({
@@ -9,8 +9,9 @@ const schema = Schema({
   updatedAt: { type: Date, default: Date.now },
   isRemove: { type: Boolean, default: false },
 },{
-  collectio: collectionName,
+  strict: true,
+  collection: collectionName,
   _id: false
 })
 
-module.exports = model(collectionName, schema)
+module.exports = MODEL(collectionName, schema)
