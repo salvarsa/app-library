@@ -25,7 +25,7 @@ const S_Books = async (_, { filter = {}, options = {}, count = false }) => {
     if (typeof isBorrowed === "Boolean") query.isBorrowed = isBorrowed;
     const find = Books.find(query)
 
-    if (count) return await Inventory.countDocuments(query);
+    if (count) return await Books.countDocuments(query);
 
     if (skip) {
       find.skip(skip);
